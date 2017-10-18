@@ -4,7 +4,34 @@ The team wants to  add a caching feature to SQLite if one is not present. If a
 caching algorithm exists, the team aims to modify the caching algorithm to
 improve performance.
 
-##
+## Development
+
+These instructions are for developers only.
+
+### Development Directory
+
+This directory should be where you make modifications to the source code. The
+OriginalSqlite directory should be untouched. We will run our modifications
+against benchmarks and use the original source code as our baseline of
+performance.
+
+### Compiling
+
+* [SQLiteCompile](https://www.sqlite.org/howtocompile.html) - Compilation
+instructions
+
+
+Execute this command within the directory that contains the source code
+```
+gcc -Os -I. -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_FTS4 \
+   -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 \
+   -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS \
+   -DHAVE_USLEEP -DHAVE_READLINE \
+   shell.c sqlite3.c -ldl -lreadline -lncurses -o sqlite3
+```
+
+
+
 
 ## Getting Started
 
