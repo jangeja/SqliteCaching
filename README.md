@@ -63,8 +63,6 @@ Add additional notes about how to deploy this on a live system
 ## Built With
 
 * [SQLite](https://www.sqlite.org) - Open source DBMS used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Authors
 
