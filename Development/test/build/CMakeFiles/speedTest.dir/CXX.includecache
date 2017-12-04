@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/andrewkim/Desktop/SqliteCaching/Development/test/speedTest.cpp
+stdio.h
+-
+stdlib.h
+-
+sqlite3.h
+-
+iostream
+-
+string
+-
+time.h
+-
+

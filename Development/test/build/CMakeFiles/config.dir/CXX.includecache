@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/andrewkim/Desktop/SqliteCaching/Development/test/init.cpp
+stdio.h
+-
+stdlib.h
+-
+sqlite3.h
+-
+iostream
+-
+string
+-
+
