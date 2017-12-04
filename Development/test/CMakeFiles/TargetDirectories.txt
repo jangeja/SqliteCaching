@@ -1,0 +1,4 @@
+/Users/andrewkim/Desktop/SqliteCaching/Development/test/CMakeFiles/rebuild_cache.dir
+/Users/andrewkim/Desktop/SqliteCaching/Development/test/CMakeFiles/edit_cache.dir
+/Users/andrewkim/Desktop/SqliteCaching/Development/test/CMakeFiles/config.dir
+/Users/andrewkim/Desktop/SqliteCaching/Development/test/CMakeFiles/speedTest.dir
