@@ -141,7 +141,7 @@ libsqlite3_la_OBJECTS = $(am_libsqlite3_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
-am__v_lt_1 =
+am__v_lt_1 = 
 libsqlite3_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(libsqlite3_la_LDFLAGS) $(LDFLAGS) -o $@
@@ -240,13 +240,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /Users/jangeja/School/CSC560/quarterProject/Development/missing aclocal-1.15
+ACLOCAL = ${SHELL} /Users/andrewkim/Desktop/SqliteCaching/Development/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /Users/jangeja/School/CSC560/quarterProject/Development/missing autoconf
-AUTOHEADER = ${SHELL} /Users/jangeja/School/CSC560/quarterProject/Development/missing autoheader
-AUTOMAKE = ${SHELL} /Users/jangeja/School/CSC560/quarterProject/Development/missing automake-1.15
+AUTOCONF = ${SHELL} /Users/andrewkim/Desktop/SqliteCaching/Development/missing autoconf
+AUTOHEADER = ${SHELL} /Users/andrewkim/Desktop/SqliteCaching/Development/missing autoheader
+AUTOMAKE = ${SHELL} /Users/andrewkim/Desktop/SqliteCaching/Development/missing automake-1.15
 AWK = awk
 BUILD_CFLAGS =
 CC = gcc
@@ -276,7 +276,7 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 JSON1_FLAGS =
-LD = /Library/Developer/CommandLineTools/usr/bin/ld
+LD = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
 LDFLAGS =
 LIBOBJS =
 LIBS =
@@ -285,7 +285,7 @@ LIPO = lipo
 LN_S = ln -s
 LTLIBOBJS =
 LT_SYS_LIBRARY_PATH =
-MAKEINFO = ${SHELL} /Users/jangeja/School/CSC560/quarterProject/Development/missing makeinfo
+MAKEINFO = ${SHELL} /Users/andrewkim/Desktop/SqliteCaching/Development/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = ./install-sh -c -d
 NM = /usr/bin/nm -B
@@ -311,10 +311,10 @@ SHELL = /bin/sh
 STRIP = strip
 THREADSAFE_FLAGS = -D_REENTRANT=1 -DSQLITE_THREADSAFE=1
 VERSION = 3.21.0
-abs_builddir = /Users/jangeja/School/CSC560/quarterProject/Development
-abs_srcdir = /Users/jangeja/School/CSC560/quarterProject/Development
-abs_top_builddir = /Users/jangeja/School/CSC560/quarterProject/Development
-abs_top_srcdir = /Users/jangeja/School/CSC560/quarterProject/Development
+abs_builddir = /Users/andrewkim/Desktop/SqliteCaching/Development
+abs_srcdir = /Users/andrewkim/Desktop/SqliteCaching/Development
+abs_top_builddir = /Users/andrewkim/Desktop/SqliteCaching/Development
+abs_top_srcdir = /Users/andrewkim/Desktop/SqliteCaching/Development
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN =
@@ -325,7 +325,11 @@ am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
 build = x86_64-apple-darwin17.2.0
+<<<<<<< HEAD
 build_alias =
+=======
+build_alias =
+>>>>>>> Andrew
 build_cpu = x86_64
 build_os = darwin17.2.0
 build_vendor = apple
@@ -336,14 +340,22 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 host = x86_64-apple-darwin17.2.0
+<<<<<<< HEAD
 host_alias =
+=======
+host_alias =
+>>>>>>> Andrew
 host_cpu = x86_64
 host_os = darwin17.2.0
 host_vendor = apple
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
+<<<<<<< HEAD
 install_sh = ${SHELL} /Users/jangeja/School/CSC560/quarterProject/Development/install-sh
+=======
+install_sh = ${SHELL} /Users/andrewkim/Desktop/SqliteCaching/Development/install-sh
+>>>>>>> Andrew
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -360,8 +372,13 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
+<<<<<<< HEAD
 target_alias =
 top_build_prefix =
+=======
+target_alias =
+top_build_prefix =
+>>>>>>> Andrew
 top_builddir = .
 top_srcdir = .
 AM_CFLAGS = -D_REENTRANT=1 -DSQLITE_THREADSAFE=1     -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_RTREE
@@ -370,7 +387,11 @@ libsqlite3_la_SOURCES = sqlite3.c
 libsqlite3_la_LDFLAGS = -no-undefined -version-info 8:6:8
 sqlite3_SOURCES = shell.c sqlite3.h
 EXTRA_sqlite3_SOURCES = sqlite3.c
+<<<<<<< HEAD
 sqlite3_LDADD = sqlite3-sqlite3.o -lreadline -ltermcap
+=======
+sqlite3_LDADD = sqlite3-sqlite3.o -lreadline -ltermcap
+>>>>>>> Andrew
 sqlite3_DEPENDENCIES = sqlite3-sqlite3.o
 sqlite3_CFLAGS = $(AM_CFLAGS) -DSQLITE_ENABLE_EXPLAIN_COMMENTS
 include_HEADERS = sqlite3.h sqlite3ext.h
@@ -453,7 +474,11 @@ clean-libLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
+<<<<<<< HEAD
 libsqlite3.la: $(libsqlite3_la_OBJECTS) $(libsqlite3_la_DEPENDENCIES) $(EXTRA_libsqlite3_la_DEPENDENCIES)
+=======
+libsqlite3.la: $(libsqlite3_la_OBJECTS) $(libsqlite3_la_DEPENDENCIES) $(EXTRA_libsqlite3_la_DEPENDENCIES)
+>>>>>>> Andrew
 	$(AM_V_CCLD)$(libsqlite3_la_LINK) -rpath $(libdir) $(libsqlite3_la_OBJECTS) $(libsqlite3_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
@@ -505,7 +530,11 @@ clean-binPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+<<<<<<< HEAD
 sqlite3$(EXEEXT): $(sqlite3_OBJECTS) $(sqlite3_DEPENDENCIES) $(EXTRA_sqlite3_DEPENDENCIES)
+=======
+sqlite3$(EXEEXT): $(sqlite3_OBJECTS) $(sqlite3_DEPENDENCIES) $(EXTRA_sqlite3_DEPENDENCIES)
+>>>>>>> Andrew
 	@rm -f sqlite3$(EXEEXT)
 	$(AM_V_CCLD)$(sqlite3_LINK) $(sqlite3_OBJECTS) $(sqlite3_LDADD) $(LIBS)
 

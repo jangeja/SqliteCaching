@@ -7,81 +7,12 @@
 
 using namespace std;
 
-static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+static int callback(void *file, int argc, char **argv, char **azColName) {
     int i;
     for (i = 0; i < argc; i++) {
-        // printf ("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        fprintf ((FILE *) file, "%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
     }
-    // printf("\n");
-    return 0;
-}
-
-
-int insertTestEntries(sqlite3 *db) {
-    char *zErrMsg = 0;
-    int rc;
-    char * sql;
-    string temp;
-    // Create 100,000 entries with uniquie id and rotating colors
-    int random;
-    string color;
-
-    for (int i = 0; i < 100000; i++) {
-        random = rand() % 10;
-        /* Create SQL statement */
-        switch(random) {
-            case 0:
-                color = "BLUE";
-                break;
-            case 1:
-                color = "GREEN";
-                break;
-            case 2:
-                color = "RED";
-                break;
-            case 3:
-                color = "YELLOW";
-                break;
-            case 4:
-                color = "PURPLE";
-                break;
-            case 5:
-                color = "BLACK";
-                break;
-            case 6:
-                color = "WHITE";
-                break;
-            case 7:
-                color = "BROWN";
-                break;
-            case 8:
-                color = "ORANGE";
-                break;
-            case 9:
-                color = "GRAY";
-                break;
-            default:
-                break;
-        }
-
-        temp = "INSERT INTO COLORS(ID, COLOR) VALUES (" + to_string(i) + ",'" + color + "');";
-        cout << temp << endl;
-        sql = new char[temp.length() + 1];
-        strcpy(sql, temp.c_str());
-
-        /* Execute SQL statement */
-        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-
-        if (rc != SQLITE_OK) {
-            fprintf(stderr, "SQL error: %s\n", zErrMsg);
-        }
-
-        else {
-            fprintf(stdout, "Table created successfully\n");
-        }
-        delete [] sql;
-    }
-
+    fprintf((FILE *) file, "\n");
     return 0;
 }
 
@@ -94,6 +25,7 @@ double getDuration(double t1, double t2) {
  *************** TEST CASES ***************
  * */
 void test1(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_1.txt", "w");
     char *zErrMsg = 0;
     int rc;
     char * sql;
@@ -110,7 +42,7 @@ void test1(sqlite3 * db) {
         strcpy(sql, temp.c_str());
 
         /* Execute SQL statement */
-        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
 
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -119,11 +51,14 @@ void test1(sqlite3 * db) {
 
     }
     end = clock();
-    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl << endl;
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 1 complete." << endl << endl;
+    fclose(t_out);
 }
 
 
 void test2(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_2.txt", "w");
     char *zErrMsg = 0;
     int rc;
     char * sql;
@@ -140,7 +75,7 @@ void test2(sqlite3 * db) {
         strcpy(sql, temp.c_str());
 
         /* Execute SQL statement */
-        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
 
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -149,10 +84,13 @@ void test2(sqlite3 * db) {
 
     }
     end = clock();
-    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl << endl;
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 2 complete." << endl << endl;
+    fclose(t_out);
 }
 
 void test3(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_3.txt", "w");
     char *zErrMsg = 0;
     int rc;
     char * sql;
@@ -161,15 +99,15 @@ void test3(sqlite3 * db) {
     start = clock();
 
     cout << "******* TEST 3 *******" << endl;
-    cout << "Running the SELECT * for each 100,000 unique key in the databse." << endl;
+    cout << "Running the SELECT * for each 500,000 unique key in the database." << endl;
 
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 500000; i++) {
         temp = "SELECT * FROM COLORS WHERE id = " + to_string(i) + ";";
         sql = new char[temp.length() + 1];
         strcpy(sql, temp.c_str());
 
         /* Execute SQL statement */
-        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
 
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -178,10 +116,13 @@ void test3(sqlite3 * db) {
 
     }
     end = clock();
-    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl << endl;
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 3 complete." << endl << endl;
+    fclose(t_out);
 }
 
 void test4(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_4.txt", "w");
     char *zErrMsg = 0;
     int rc;
     char * sql;
@@ -190,15 +131,15 @@ void test4(sqlite3 * db) {
     start = clock();
 
     cout << "******* TEST 4 *******" << endl;
-    cout << "Running the SELECT COLOR for each 100,000 unique key in the databse." << endl;
+    cout << "Running the SELECT COLOR for each 500,000 unique key in the database." << endl;
 
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 500000; i++) {
         temp = "SELECT COLOR FROM COLORS WHERE id = " + to_string(i) + ";";
         sql = new char[temp.length() + 1];
         strcpy(sql, temp.c_str());
 
         /* Execute SQL statement */
-        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
 
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -207,9 +148,289 @@ void test4(sqlite3 * db) {
 
     }
     end = clock();
-    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl << endl;
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 4 complete." << endl << endl;
+    fclose(t_out);
 }
 
+void test5(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_5.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 5 *******" << endl;
+    cout << "SELECT * id 1 alternated with incrementing id 500,000 times (i.e. 1, 2, 1, 3, 1, 4...)." << endl;
+
+    for (int i = 0; i < 250000; i++) {
+        temp = "SELECT * FROM COLORS WHERE id = 1;";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+        temp = "SELECT * FROM COLORS WHERE id = " + to_string(i) + ";";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+    }
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 5 complete." << endl << endl;
+    fclose(t_out);
+}
+
+void test6(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_6.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 6 *******" << endl;
+    cout << "SELECT COUNT(*) GROUP BY COLOR 100 times." << endl;
+
+    for (int i = 0; i < 100; i++) {
+        temp = "SELECT COUNT(*) FROM COLORS GROUP BY COLOR;";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+    }
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 6 complete." << endl << endl;
+    fclose(t_out);
+}
+
+void test7(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_7.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 7 *******" << endl;
+    cout << "SELECT * id 1-99 and increment next by one (i.e. 1...99, 100, 1...99, 101...) 500,000 queries." << endl;
+
+    for (int i = 0; i < 5000; i++) {
+        for (int j = 1; j < 100; j++) {
+            temp = "SELECT * FROM COLORS WHERE ID = " + to_string(j) + ";";
+            sql = new char[temp.length() + 1];
+            strcpy(sql, temp.c_str());
+
+            /* Execute SQL statement */
+            rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "SQL error: %s\n", zErrMsg);
+            }
+            delete [] sql;
+
+        }
+
+        temp = "SELECT * FROM COLORS WHERE ID = " + to_string(i + 100) + ";";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+
+    }
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 7 complete." << endl << endl;
+    fclose(t_out);
+}
+
+void test8(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_8.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 8 *******" << endl;
+    cout << "SELECT id 1-3 and increment next by one (i.e. 1...3, 4, 1...3, 5...) 500,000 queries." << endl;
+    for (int i = 0; i < 125000; i++) {
+        for (int j = 1; j < 4; j++) {
+            temp = "SELECT * FROM COLORS WHERE ID = " + to_string(j) + ";";
+            sql = new char[temp.length() + 1];
+            strcpy(sql, temp.c_str());
+
+            /* Execute SQL statement */
+            rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "SQL error: %s\n", zErrMsg);
+            }
+            delete [] sql;
+
+        }
+
+        temp = "SELECT * FROM COLORS WHERE ID = " + to_string(i + 4) + ";";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+    }
+
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 8 complete." << endl << endl;
+    fclose(t_out);
+}
+
+void test9(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_9.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 9 *******" << endl;
+    cout << "SELECT SUM of Likability 100 times." << endl;
+
+    for (int i = 0; i < 100; i++) {
+        temp = "SELECT SUM(COLORS.LIKABILITY) FROM COLORS GROUP BY COLOR;";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+    }
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 9 complete." << endl << endl;
+    fclose(t_out);
+}
+
+void test10(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_10.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 10 *******" << endl;
+    cout << "SELECT AVG of Likability 100 times." << endl;
+
+    for (int i = 0; i < 100; i++) {
+        temp = "SELECT AVG(COLORS.LIKABILITY) FROM COLORS GROUP BY COLOR;";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+    }
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 10 complete." << endl << endl;
+    fclose(t_out);
+}
+
+void test11(sqlite3 * db) {
+    FILE * t_out = fopen("Log/Test_11.txt", "w");
+    char *zErrMsg = 0;
+    int rc;
+    char * sql;
+    string temp;
+    double start, end;
+    start = clock();
+
+    cout << "******* TEST 11 *******" << endl;
+    cout << "SELECT each unique id and UPDATE each Likability field." << endl;
+
+    for (int i = 0; i < 250000; i++) {
+        temp = "SELECT * FROM COLORS WHERE id = " + to_string(i) + ";";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+        int random = rand() % 10;
+        temp = "UPDATE COLORS SET LIKABILITY = " + to_string(random) + " WHERE id = " + to_string(i) + ";";
+        sql = new char[temp.length() + 1];
+        strcpy(sql, temp.c_str());
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, t_out, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        delete [] sql;
+
+    }
+    end = clock();
+    cout << "-- Execution Time: " + to_string(getDuration(start, end)) << endl;
+    cout << "Test 11 complete." << endl << endl;
+    fclose(t_out);
+}
 /*
  * Main
  * */
@@ -218,6 +439,20 @@ int main(int argc, char **argv) {
     char *zErrMsg = 0;
     int rc;
     char * sql;
+
+    // Remove old log files
+    cout << "Removing old log files..." << endl;
+    remove("Log/Test_1.txt");
+    remove("Log/Test_2.txt");
+    remove("Log/Test_3.txt");
+    remove("Log/Test_4.txt");
+    remove("Log/Test_5.txt");
+    remove("Log/Test_6.txt");
+    remove("Log/Test_7.txt");
+    remove("Log/Test_8.txt");
+    remove("Log/Test_9.txt");
+    remove("Log/Test_10.txt");
+    remove("Log/Test_11.txt");
 
     /* Open Database */
     rc = sqlite3_open("test.db", &db);
@@ -237,6 +472,13 @@ int main(int argc, char **argv) {
     test2(db);
     test3(db);
     test4(db);
+    test5(db);
+    test6(db);
+    test7(db);
+    test8(db);
+    test9(db);
+    test10(db);
+    test11(db);
 
     cout << "End." << endl;
     return 0;
