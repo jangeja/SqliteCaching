@@ -54,10 +54,10 @@ RM = /usr/local/Cellar/cmake/3.10.0/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/andrewkim/Desktop/SqliteCaching/Development/test
+CMAKE_SOURCE_DIR = /Users/jangeja/School/CSC560/quarterProject/Development/test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/andrewkim/Desktop/SqliteCaching/Development/test/build
+CMAKE_BINARY_DIR = /Users/jangeja/School/CSC560/quarterProject/Development/test/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/config.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /Users/andrewkim/Desktop/SqliteCaching/Development/test/build
 CMakeFiles/config.dir/all:
 	$(MAKE) -f CMakeFiles/config.dir/build.make CMakeFiles/config.dir/depend
 	$(MAKE) -f CMakeFiles/config.dir/build.make CMakeFiles/config.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/andrewkim/Desktop/SqliteCaching/Development/test/build/CMakeFiles --progress-num=1,2 "Built target config"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jangeja/School/CSC560/quarterProject/Development/test/build/CMakeFiles --progress-num=1,2 "Built target config"
 .PHONY : CMakeFiles/config.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/config.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/config.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrewkim/Desktop/SqliteCaching/Development/test/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangeja/School/CSC560/quarterProject/Development/test/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/config.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrewkim/Desktop/SqliteCaching/Development/test/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangeja/School/CSC560/quarterProject/Development/test/build/CMakeFiles 0
 .PHONY : CMakeFiles/config.dir/rule
 
 # Convenience name for target.
@@ -103,7 +103,7 @@ clean: CMakeFiles/config.dir/clean
 CMakeFiles/speedTest.dir/all:
 	$(MAKE) -f CMakeFiles/speedTest.dir/build.make CMakeFiles/speedTest.dir/depend
 	$(MAKE) -f CMakeFiles/speedTest.dir/build.make CMakeFiles/speedTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/andrewkim/Desktop/SqliteCaching/Development/test/build/CMakeFiles --progress-num=3,4 "Built target speedTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jangeja/School/CSC560/quarterProject/Development/test/build/CMakeFiles --progress-num=3,4 "Built target speedTest"
 .PHONY : CMakeFiles/speedTest.dir/all
 
 # Include target in all.
@@ -113,9 +113,9 @@ all: CMakeFiles/speedTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/speedTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrewkim/Desktop/SqliteCaching/Development/test/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangeja/School/CSC560/quarterProject/Development/test/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/speedTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrewkim/Desktop/SqliteCaching/Development/test/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangeja/School/CSC560/quarterProject/Development/test/build/CMakeFiles 0
 .PHONY : CMakeFiles/speedTest.dir/rule
 
 # Convenience name for target.

@@ -22,7 +22,7 @@ int insertTestEntries(sqlite3 *db) {
     int rc;
     char * sql;
     string temp;
-    // Create 100,000 entries with uniquie id and rotating colors 
+    // Create 100,000 entries with uniquie id and rotating colors
     int random;
     string color;
 
@@ -63,12 +63,12 @@ int insertTestEntries(sqlite3 *db) {
             default:
                 break;
         }
-         
+
         temp = "INSERT INTO COLORS(ID, COLOR) VALUES (" + to_string(i) + ",'" + color + "');";
         cout << temp << endl;
         sql = new char[temp.length() + 1];
         strcpy(sql, temp.c_str());
-        
+
         /* Execute SQL statement */
         rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
 
@@ -90,7 +90,7 @@ double getDuration(double t1, double t2) {
     return duration/CLOCKS_PER_SEC;
 }
 
-/* 
+/*
  *************** TEST CASES ***************
  * */
 void test1(sqlite3 * db) {
@@ -100,10 +100,10 @@ void test1(sqlite3 * db) {
     string temp;
     double start, end;
     start = clock();
-    
+
     cout << "******* TEST 1 *******" << endl;
     cout << "Running the same SELECT * statement for one tuple 500,000 times." << endl;
-    
+
     for (int i = 0; i < 500000; i++) {
         temp = "SELECT * FROM COLORS WHERE id = 7;";
         sql = new char[temp.length() + 1];
@@ -111,7 +111,7 @@ void test1(sqlite3 * db) {
 
         /* Execute SQL statement */
         rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-        
+
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
         }
@@ -130,10 +130,10 @@ void test2(sqlite3 * db) {
     string temp;
     double start, end;
     start = clock();
-    
+
     cout << "******* TEST 2 *******" << endl;
     cout << "Running the same SELECT COLOR statement for one data item 500,000 times." << endl;
-    
+
     for (int i = 0; i < 500000; i++) {
         temp = "SELECT COLOR FROM COLORS WHERE id = 7;";
         sql = new char[temp.length() + 1];
@@ -141,7 +141,7 @@ void test2(sqlite3 * db) {
 
         /* Execute SQL statement */
         rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-        
+
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
         }
@@ -159,10 +159,10 @@ void test3(sqlite3 * db) {
     string temp;
     double start, end;
     start = clock();
-    
+
     cout << "******* TEST 3 *******" << endl;
     cout << "Running the SELECT * for each 100,000 unique key in the databse." << endl;
-    
+
     for (int i = 0; i < 100000; i++) {
         temp = "SELECT * FROM COLORS WHERE id = " + to_string(i) + ";";
         sql = new char[temp.length() + 1];
@@ -170,7 +170,7 @@ void test3(sqlite3 * db) {
 
         /* Execute SQL statement */
         rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-        
+
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
         }
@@ -188,10 +188,10 @@ void test4(sqlite3 * db) {
     string temp;
     double start, end;
     start = clock();
-    
+
     cout << "******* TEST 4 *******" << endl;
     cout << "Running the SELECT COLOR for each 100,000 unique key in the databse." << endl;
-    
+
     for (int i = 0; i < 100000; i++) {
         temp = "SELECT COLOR FROM COLORS WHERE id = " + to_string(i) + ";";
         sql = new char[temp.length() + 1];
@@ -199,7 +199,7 @@ void test4(sqlite3 * db) {
 
         /* Execute SQL statement */
         rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-        
+
         if (rc != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", zErrMsg);
         }
@@ -218,7 +218,7 @@ int main(int argc, char **argv) {
     char *zErrMsg = 0;
     int rc;
     char * sql;
-    
+
     /* Open Database */
     rc = sqlite3_open("test.db", &db);
 
@@ -238,6 +238,6 @@ int main(int argc, char **argv) {
     test3(db);
     test4(db);
 
-    cout << "End." << endl;    
+    cout << "End." << endl;
     return 0;
 }

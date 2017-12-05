@@ -1,4 +1,4 @@
-# Install script for directory: /Users/andrewkim/Desktop/SqliteCaching/Development/test
+# Install script for directory: /Users/jangeja/School/CSC560/quarterProject/Development/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/andrewkim/Desktop/SqliteCaching/Development/test/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/jangeja/School/CSC560/quarterProject/Development/test/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
