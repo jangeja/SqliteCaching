@@ -22,13 +22,16 @@ instructions
 2. Execute this command within the directory that contains the source code. The
   ```-DALGORITHM_EVICTION``` flag is used to specify the eviction algorithm to
   be used
-```
-gcc -Os -I. -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_FTS4 \
+```gcc -Os -I. -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_FTS4 \
    -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 \
    -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS \
    -DHAVE_USLEEP -DHAVE_READLINE \
-   shell.c sqlite3.c -ldl -lreadline -lncurses -o sqlite3
+   shell.c sqlite3.c -ldl -lreadline -lncurses -o sqlite3 - DALGORITHM_EVICTION
 ```
+    1. ```-DQUEUE_EVICTION``` This is the standard sqlite3 eviction algorithm,
+      FIFO.
+    2. ```-DSTACK_EVICTION``` This is the LIFO eviction algorithm.
+    3. ```-SECOND
 
 
 
