@@ -1,1 +1,10 @@
+Development/.libs/
+Development/.deps/
+Development/*.o
+Development/sqlite3
+Development/test/*.o
+Development/test/config
+Development/test/speedTest
 Development/test/build/
+.DS_Store
+**/.DS_Store
