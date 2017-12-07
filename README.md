@@ -21,9 +21,7 @@ run on a linux machine
 instructions
 
 1. ```cd Development/sqliteSrc```
-2. Execute this command within the directory that contains the source code. The
-  ```-DALGORITHM_EVICTION``` flag is used to specify the eviction algorithm to
-  be used
+2. Execute this command within the directory that contains the source code. The -DALGORITHM_EVICTION flag is used to specify the eviction algorithm to be used
 ```gcc -Os -I. -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_FTS4 \
    -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 \
    -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS \
