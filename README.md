@@ -28,12 +28,12 @@ instructions
    -DHAVE_USLEEP -DHAVE_READLINE
    shell.c sqlite3.c -ldl -lreadline -lncurses -c -o sqlite3.o -DALGORITHM_EVICTION
    ```
-    1. ```-DQUEUE_EVICTION``` This is the standard sqlite3 eviction algorithm,
+    1. -DQUEUE_EVICTION This is the standard sqlite3 eviction algorithm,
       FIFO.
-    2. ```-DSTACK_EVICTION``` LIFO
-    3. ```-DSECOND_CHANCE_EVICTION```
-    4. ```-DCLOCK_EVICTION```
-    5. ```-DWILD_WEST_EVICTION```
+    2. -DSTACK_EVICTION LIFO
+    3. -DSECOND_CHANCE_EVICTION
+    4. -DCLOCK_EVICTION
+    5. -DWILD_WEST_EVICTION
 3. ```cp sqlite3.o ../test/sqlite3.o```
 4. ```cd ../test```
 5. ```cmake .```
